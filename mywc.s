@@ -20,7 +20,7 @@ iInWord:
 
         .section .bss
 
-lIndex:
+iChar:
         .skip   4
 
 //----------------------------------------------------------------------
@@ -38,3 +38,15 @@ lIndex:
 
         .global main
 main:
+        // Prolog
+        sub     sp, sp, MAIN_STACK_BYTECOUNT
+        str     x30, [sp]
+
+loop1:
+        // iChar = getchar();
+        mov     x0, //getchar()? do I load in the first byte and then shift to the right 1?
+        adr     x1, iChar
+        str     x0, [x1]
+
+        // if ((iChar == EOF) goto whileLoopEnd;
+
