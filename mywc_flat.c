@@ -28,7 +28,8 @@ static int iInWord = FALSE;      /* Bad style. */
 int main(void)
 {
     whileLoop:
-        if ((iChar = getchar()) == EOF) goto whileLoopEnd;
+        iChar = getchar();
+        if ((iChar == EOF) goto whileLoopEnd;
         lCharCount++;
     
     if(!isspace(iChar)) goto else1;
