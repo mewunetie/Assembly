@@ -29,7 +29,7 @@ int main(void)
 {
     whileLoop:
         iChar = getchar();
-        if ((iChar == EOF) goto whileLoopEnd;
+        if ((iChar == EOF)) goto whileLoopEnd;
         lCharCount++;
     
     if(!isspace(iChar)) goto else1;
@@ -50,6 +50,5 @@ int main(void)
     if(!iInWord) goto endif4;
         lWordCount++;
     endif4:
-
     printf("%7ld %7ld %7ld\n", lLineCount, lWordCount, lCharCount);return 0;
 }
