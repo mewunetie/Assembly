@@ -44,6 +44,7 @@ int main(void)
     if (iChar != '\n') goto endif3;
         lLineCount++;
     endif3:
+    goto loop1;
     endloop1:
     
     if(!iInWord) goto endif4;
