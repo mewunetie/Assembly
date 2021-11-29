@@ -27,8 +27,8 @@ static int iInWord = FALSE;      /* Bad style. */
 
 int main(void)
 {
-    whileLoop:
-        if ((iChar = getchar() == EOF)) goto whileLoopEnd;
+    loop1:
+        if ((iChar = getchar() == EOF)) goto endloop1;
         lCharCount++;
     
     if(!isspace(iChar)) goto else1;
@@ -44,7 +44,7 @@ int main(void)
     if (iChar != '\n') goto endif3;
         lLineCount++;
     endif3:
-    whileLoopEnd:
+    endloop1:
     
     if(!iInWord) goto endif4;
         lWordCount++;
