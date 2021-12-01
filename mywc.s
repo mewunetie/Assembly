@@ -85,10 +85,12 @@ ifstatement2:
         add     x1, x1, 1
         str     x1, [x0]
 
-        // iInWord = FALSE;
+        // iInWord = FALSE;      
         adr     x0, iInWord
-        ldr     x1, [x0]
-        str     FALSE, [x0]
+        ldr     x0, [x0]
+        adr     x1, FALSE
+        ldr     x1, [x1]
+        str     x1, [x0]
 
 else1:
         // if(iInWord) goto endif2;
@@ -99,8 +101,14 @@ else1:
 
         // iInWord = TRUE;
         adr     x0, iInWord
-        ldr     x1, [x0]
-        str     TRUE, [x0]
+        ldr     x0, [x0]
+        adr     x1, TRUE
+        ldr     x1, [x1]
+        str     x1, [x0]
+
+        // adr     x0, iInWord
+        // ldr     x1, [x0]
+        // str     TRUE, [x0]
 
 endif2:
 
