@@ -35,7 +35,6 @@ int main(void)
     if(!iInWord) goto endif1;
         lWordCount++;
         iInWord = FALSE;
-    /* goto endif1; what is this?? */
     else1:
     if(iInWord) goto endif2;
         iInWord = TRUE;
