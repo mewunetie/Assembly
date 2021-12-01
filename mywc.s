@@ -70,13 +70,13 @@ ifstatement1:
         adr     x0, iChar
         ldr     x0, [x0]
         bl      isspace
-        cmp     iChar, FALSE
+        cmp     x0, FALSE
         beq     else1
 ifstatement2:
         // if(!iInWord) goto endif1;
         adr     x0, iInWord // should I be using a different register?
         ldr     x0, [x0]
-        cmp     iInWord, FALSE
+        cmp     x0, FALSE
         beq     endif1
 
         // lWordCount++;
@@ -94,7 +94,7 @@ else1:
         // if(iInWord) goto endif2;
         adr     x0, iInWord // should I be using a different register?
         ldr     x0, [x0]
-        cmp     iInWord, TRUE
+        cmp     x0, TRUE
         beq     endif2
 
         // iInWord = TRUE;
@@ -129,7 +129,7 @@ ifstatement4:
         // if(!iInWord) goto endif4;
         adr     x0, iInWord // should I be using a different register?
         ldr     x0, [x0]
-        cmp     iInWord, FALSE
+        cmp     x0, FALSE
         beq     endif4
 
         // lWordCount++;
@@ -143,7 +143,7 @@ endif4:
         adr     x0, printfFormatStr
         adr     x1, lLineCount
         ldr     x1, [x1]
-        adr     x2. lWordCount
+        adr     x2, lWordCount
         ldr     x2, [x2]
         adr     x3, lCharCount
         ldr     x3, [x3]
