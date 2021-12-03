@@ -131,7 +131,7 @@ BigInt_add:
         ldr     x1, [x1]
         str     x1, [sp, lLength]
         cmp     x1, x0
-        bsl     endif2
+        ble     endif2
 
 
         //    memset(oSum->aulDigits, 0, MAX_DIGITS * sizeof(unsigned long));
