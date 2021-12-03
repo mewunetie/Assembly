@@ -252,7 +252,7 @@ endif4:
         ldr     x0, [x0, x1, lsl 3] 
         adr     x2, ulSum
         ldr     x2, [x2]
-        str     x2, x[0]
+        str     x2, [x0]
 
         // lIndex++;
         adr     x0, lIndex
@@ -292,7 +292,7 @@ endloop6:
         ldr     x0, [x0, x1, lsl 3] 
         adr     x2, one
         ldr     x2, [x2]
-        str     x2, x[0]
+        str     x2, [x0]
 
         // SumLength++;
         adr     x0, SumLength
@@ -308,7 +308,7 @@ endloop5:
         ldr     x0, [x0, x1, lsl 3] 
         adr     x2, lSumLength
         ldr     x2, [x2]
-        str     x2, x[0]
+        str     x2, [x0]
 
         // epilog and return TRUE;
         ldr x0, TRUE  // Load true
