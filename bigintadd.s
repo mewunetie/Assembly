@@ -37,7 +37,7 @@
 BigInt_larger:
         // Prolog
         // long lLarger;
-        sub     sp, sp, MAIN_STACK_BYTECOUNT
+        sub     sp, sp, STACK_BYTECOUNT
         str     x30, [sp]
         str     x0, [sp, lLength1] // Save lLength1
         str     x1, [sp, lLength2] // Save lLength2
@@ -49,9 +49,9 @@ BigInt_larger:
         bls     else1 
 
         // lLarger = lLength1;
-        adr     x2, [sp, lLarger]
+        adr     x2, lLarger
         ldr     x2, [x2]
-        str     x0, [sp, lLarger]
+        str     x0, lLarger
 
 else1:
         //  if (lLength1 > lLength2) goto endif1;
@@ -107,7 +107,7 @@ BigInt_add:
         // long lIndex;
         // long lSumLength;
         // Prolog
-        sub     sp, sp, MAIN_STACK_BYTECOUNT
+        sub     sp, sp, STACK_BYTECOUNT
         str     x30, [sp]
         str     x0, [sp, oAddend1] // Save oAddend1
         str     x1, [sp, oAddend2] // Save oAddend2
