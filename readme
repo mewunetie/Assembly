@@ -3,16 +3,12 @@ Assignment 5 readme File
 ------------------------------------------------------------------------
 Student 1: What is your name?
 
-
-
-------------------------------------------------------------------------
-Student 2: What is your name?
-
+Misrach Ewunetie
 
 
 ------------------------------------------------------------------------
 How many late days are you using on this assignment?
-
+0
 
 
 ------------------------------------------------------------------------
@@ -20,14 +16,21 @@ Student 1: What authorized sources of information did you use to
 complete the assignment? COPY THE LIST of authorized sources of
 information given in the "Policies" web page to this section of the
 readme file, and edit it as appropriate.
+The course's lectures.
 
+The course's precepts.
 
+The course's website.
 
-------------------------------------------------------------------------
-Student 2: What authorized sources of information did you use to
-complete the assignment? COPY THE LIST of authorized sources of
-information given in the "Policies" web page to this section of the
-readme file, and edit it as appropriate.
+Documents that are referenced directly by the course's website. Such documents include the course's lecture slides and precept handouts.
+
+The course's textbooks.
+
+The course's current staff members outside of class time through office hours.
+
+The course's current staff members outside of class time through Ed.
+
+Current lab teaching assistants through visits to the course labs.
 
 
 
@@ -43,31 +46,14 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
-
-------------------------------------------------------------------------
-Student 2: What unauthorized sources of information did you use to
-complete the assignment? List any unauthorized sources of information
-that you used to complete the assignment, and describe how you used
-them. The course "Policies" web page defines unauthorized sources of
-information, and any source that you have used but not listed in the
-authorized sources should be included here. Please note that using an
-unauthorized source may trigger a course penalty, and depending on the
-nature of the interaction, may additionally require the interaction
-being reported to the Committee on Discipline. Write "None" if you used
-no unauthorized sources of information.
+None.
 
 
 
 ------------------------------------------------------------------------
 Student 1: What is your assessment of the assignment? Was it helpful?
 Was it fun?
-
-
-
-------------------------------------------------------------------------
-Student 2: What is your assessment of the assignment? Was it helpful?
-Was it fun?
+I think that this assignment was helpful. I enjoyed doing the first part, and possibly would have enjoyed part 2 if given more time. Ultimately, it was a good introduction to assembly language.
 
 
 
@@ -80,6 +66,12 @@ particular, what bugs are in your submission?
 
 ------------------------------------------------------------------------
 What is your mywc program test plan?
+mywcBoundary.txt:
+For boundary tests, I focused on having tests which contained several new line chars, one line full of only spaces, and a few printable chars in the alphabet in order to see how the programs would handle having only one newline/space/char at a time, as well as a few at a time.
+mywcStatement.txt:
+For statement tests, I included an essay I wrote for a separate class since it would be able to test all of the lines of mywc.c and mywc.s since it would contain a series of printable chars, new lines, and spaces.
+mywcStress.txt:
+For the stress test, I wanted to make sure that all possible ASCII printable characters were in this text file so that the programs would be tested on whether they could handle these.
 
 
 
@@ -87,9 +79,9 @@ What is your mywc program test plan?
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
 2e, and 2f to compute fib(250000) on armlab? Fill in the blanks.
 
-Part 2a:  _____ seconds
+Part 2a:  11.990000 seconds
 
-Part 2b:  _____ seconds
+Part 2b:  3.070000 seconds
 
 Part 2d:  _____ seconds
 

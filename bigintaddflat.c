@@ -22,6 +22,7 @@ static long BigInt_larger(long lLength1, long lLength2)
         lLarger = lLength1;
     else1:
     if (lLength1 > lLength2) goto endif1;
+        lLarger = lLength2;
     endif1:
     return lLarger;
 }
@@ -36,12 +37,6 @@ int BigInt_add(BigInt_T oAddend1, BigInt_T oAddend2, BigInt_T oSum)
     unsigned long ulSum;
     long lIndex;
     long lSumLength;
-    
-    assert(oAddend1 != NULL);
-    assert(oAddend2 != NULL);
-    assert(oSum != NULL);
-    assert(oSum != oAddend1);
-    assert(oSum != oAddend2);
     
     /* Determine the larger length. */
     lSumLength = BigInt_larger(oAddend1->lLength, oAddend2->lLength);

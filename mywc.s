@@ -53,7 +53,7 @@ loop1:
         adr     x0, iChar
         bl      getchar
         adr     x1, iChar
-        str     x0, [x1] // maybe use strb instead?
+        str     x0, [x1]
 
         // if ((iChar == EOF) goto whileLoopEnd;
         adr     x0, iChar
@@ -108,9 +108,6 @@ else1:
         ldr     x1, [x1]
         str     x1, [x0]
 
-        // adr     x0, iInWord
-        // ldr     x1, [x0]
-        // str     TRUE, [x0]
 
 endif2:
 
