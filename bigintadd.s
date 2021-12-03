@@ -51,7 +51,7 @@ BigInt_larger:
         // lLarger = lLength1;
         adr     x2, lLarger
         ldr     x2, [x2]
-        str     x0, lLarger
+        str     x0, [x2]
 
 else1:
         //  if (lLength1 > lLength2) goto endif1;
@@ -61,9 +61,9 @@ else1:
         bhi     endif1 
 
         // lLarger = lLength2;
-        adr     x2, [sp, lLarger]
+        adr     x2, lLarger
         ldr     x2, [x2]
-        str     x1, [sp, lLarger]
+        str     x1, [x2]
 endif1:
         // return lLarger;
         ldr x0, [sp, lLarger]  // Load lLarger
@@ -114,7 +114,7 @@ BigInt_add:
         str     x2, [sp, oSum] // Save oSum
         
         // lSumLength = BigInt_larger(oAddend1->lLength, oAddend2->lLength);
-        adr     x0, [sp, lSumLength]
+        adr     x0, lSumLength
         ldr     x0, [x0]
         adr     x1, [sp, oAddend1]
         ldr     x1, [x1]
