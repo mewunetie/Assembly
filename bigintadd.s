@@ -7,6 +7,7 @@
         .equ    lLength, 0
         .equ    MAX_DIGITS, 32768
         .equ    eight, 8
+        .equ    four, 4
 //----------------------------------------------------------------------
         .section .rodata
 
@@ -314,9 +315,10 @@ endloop5:
         str     x2, [x0]
 
         // epilog and return TRUE;
-        ldr x0, TRUE  // Load true
-        ldr x30, [sp]     // Restore x30
-        add sp, sp, TRUE
+        adr     x0, TRUE
+        ldr     x0, [sp, four]  // Load true
+        ldr     x30, [sp]     // Restore x30
+        add     sp, sp, TRUE
         ret
         
 
