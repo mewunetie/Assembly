@@ -116,10 +116,10 @@ BigInt_add:
         // lSumLength = BigInt_larger(oAddend1->lLength, oAddend2->lLength);
         adr     x0, lSumLength
         ldr     x0, [x0]
-        adr     x1, [sp, oAddend1]
+        adr     x1, oAddend1
         ldr     x1, [x1]
         str     x1, [sp, lLength]
-        adr     x2, [sp, oAddend2]
+        adr     x2, oAddend2
         ldr     x2, [x2]
         str     x2, [sp, lLength]
         bl      BigInt_larger
@@ -127,7 +127,7 @@ BigInt_add:
         ldr     x0, [x0, x1, lsl 3]
 
         //    if (oSum->lLength <= lSumLength) goto endif2;
-        adr     x1, [sp, oSum]
+        adr     x1, oSum
         ldr     x1, [x1]
         str     x1, [sp, lLength]
         cmp     x1, x0
@@ -135,7 +135,7 @@ BigInt_add:
 
 
         //    memset(oSum->aulDigits, 0, MAX_DIGITS * sizeof(unsigned long));
-        adr     x0, [sp, oSum]
+        adr     x0, oSum
         ldr     x0, [x0]
         str     x0, [sp, aulDigits]
         adr     x1, zero
@@ -165,32 +165,32 @@ endif2:
 
 loop1:
         // if (lIndex >= lSumLength) goto endloop1;
-        adr     x0, [sp, lIndex]
+        adr     x0, lIndex
         ldr     x0, [x0]
-        adr     x1, [sp, lSumLength]
+        adr     x1, lSumLength
         ldr     x1, [x1]
         cmp     x0, x1
         bge     endloop1
 
         // ulSum = ulCarry;
-        adr     x0, [sp, ulSum]
+        adr     x0, ulSum
         ldr     x0, [x0]
-        adr     x1, [sp, ulCarry]
+        adr     x1, ulCarry
         ldr     x1, [x1]
         str     x0, [x1]
 
 
         // ulCarry = 0;
-        adr     x0, [sp, ulCarry]
+        adr     x0, ulCarry
         ldr     x0, [x0]
         adr     x1, zero
         ldr     x1, [x1]
         str     x1, [x0]
 
         // ulSum += oAddend1->aulDigits[lIndex];
-        adr     x0, [sp, ulSum]
+        adr     x0, ulSum
         ldr     x0, [x0]
-        adr     x1, [sp, oAddend1]
+        adr     x1, oAddend1
         ldr     x1, [x1]
         add     x1, x1, 8
         mov     x2, lIndex
@@ -200,7 +200,7 @@ loop1:
 
 
         // if (ulSum >= oAddend1->aulDigits[lIndex]) goto endif3;
-        adr     x1, [sp, oAddend1]
+        adr     x1, oAddend1
         ldr     x1, [x1]
         add     x1, x1, 8
         mov     x2, lIndex
@@ -209,7 +209,7 @@ loop1:
         bge     endif3
 
         // ulCarry = 1;
-        adr     x0, [sp, ulCarry]
+        adr     x0, ulCarry
         ldr     x0, [x0]
         adr     x1, one
         ldr     x1, [x1]
@@ -217,9 +217,9 @@ loop1:
 endif3:
 
         // ulSum += oAddend2->aulDigits[lIndex];
-        adr     x0, [sp, ulSum]
+        adr     x0, ulSum
         ldr     x0, [x0]
-        adr     x1, [sp, oAddend2]
+        adr     x1, oAddend2
         ldr     x1, [x1]
         add     x1, x1, 8
         mov     x2, lIndex
@@ -229,7 +229,7 @@ endif3:
 
 
         // if (ulSum >= oAddend1->aulDigits[lIndex]) goto endif4;
-        adr     x1, [sp, oAddend1]
+        adr     x1, oAddend1
         ldr     x1, [x1]
         add     x1, x1, 8
         mov     x2, lIndex
@@ -238,19 +238,19 @@ endif3:
         bge     endif4
 
         // ulCarry = 1;
-        adr     x0, [sp, ulCarry]
+        adr     x0, ulCarry
         ldr     x0, [x0]
         adr     x1, one
         ldr     x1, [x1]
         str     x1, [x0]
 endif4:
         // oSum->aulDigits[lIndex] = ulSum;
-        adr     x0, [sp, oSum]
+        adr     x0, oSum
         ldr     x0, [x0]
         add     x0, x0, 8
         mov     x1, lIndex
         ldr     x0, [x0, x1, lsl 3] 
-        adr     x2, [sp, ulSum]
+        adr     x2, ulSum
         ldr     x2, [x2]
         str     x2, x[0]
 
@@ -264,7 +264,7 @@ endif4:
 endloop1:
 
         // if (ulCarry != 1) goto endloop5;
-        adr     x0, [sp, ulCarry]
+        adr     x0, ulCarry
         ldr     x0, [x0]
         adr     x1, one
         ldr     x1, [x1]
@@ -272,7 +272,7 @@ endloop1:
         bne     endloop5
 
         // if (lSumLength != MAX_DIGITS) goto endloop6;
-        adr     x0, [sp, lSumLength]
+        adr     x0, lSumLength
         ldr     x0, [x0]
         adr     x1, MAX_DIGITS
         ldr     x1, [x1]
@@ -285,7 +285,7 @@ endloop1:
         ret     x0
 endloop6:
         // oSum->aulDigits[lSumLength] = 1;
-        adr     x0, [sp, oSum]
+        adr     x0, oSum
         ldr     x0, [x0]
         add     x0, x0, 8
         mov     x1, lIndex
@@ -302,11 +302,11 @@ endloop6:
 
 endloop5:
         // oSum->lLength = lSumLength;
-        adr     x0, [sp, oSum]
+        adr     x0, oSum
         ldr     x0, [x0]
         add     x0, x0, 8
         ldr     x0, [x0, x1, lsl 3] 
-        adr     x2, [sp, lSumLength]
+        adr     x2, lSumLength
         ldr     x2, [x2]
         str     x2, x[0]
 
