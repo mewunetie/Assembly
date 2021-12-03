@@ -6,6 +6,7 @@
         .equ    TRUE, 1
         .equ    lLength, 0
         .equ    MAX_DIGITS, 32768
+        .equ    eight, 8
 //----------------------------------------------------------------------
         .section .rodata
 
@@ -143,7 +144,9 @@ BigInt_add:
         str     x1, [x1]
         adr     x2, MAX_DIGITS
         ldr     x2, [x2]
-        mul     x2, x2, 8
+        adr     x3, eight
+        ldr     x3, [x3]
+        mul     x2, x2, x3
         str     x2, [x2]
         bl      memset
 
